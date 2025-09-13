@@ -1,0 +1,3 @@
+client.grpc-dev-service.address=static://localhost:12000
+client.grpc-dev-service.negotiationType=plaintext
+client.port=11000

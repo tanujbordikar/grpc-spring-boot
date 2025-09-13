@@ -1,0 +1,9 @@
+package com.dev;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@AllArg
+public class BookAuthorClientService {
+	@
+}
