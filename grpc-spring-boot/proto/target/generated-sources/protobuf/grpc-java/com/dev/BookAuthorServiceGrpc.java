@@ -39,6 +39,42 @@ public final class BookAuthorServiceGrpc {
           .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
               com.dev.Author.getDefaultInstance()))
           .build();
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static final io.grpc.MethodDescriptor<com.dev.Author,
+      com.dev.Book> METHOD_GET_BOOKS_BY_AUTHOR =
+      io.grpc.MethodDescriptor.<com.dev.Author, com.dev.Book>newBuilder()
+          .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+          .setFullMethodName(generateFullMethodName(
+              "com.dev.BookAuthorService", "getBooksByAuthor"))
+          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              com.dev.Author.getDefaultInstance()))
+          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              com.dev.Book.getDefaultInstance()))
+          .build();
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static final io.grpc.MethodDescriptor<com.dev.Book,
+      com.dev.Book> METHOD_GET_EXPENSIVE_BOOK =
+      io.grpc.MethodDescriptor.<com.dev.Book, com.dev.Book>newBuilder()
+          .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
+          .setFullMethodName(generateFullMethodName(
+              "com.dev.BookAuthorService", "getExpensiveBook"))
+          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              com.dev.Book.getDefaultInstance()))
+          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              com.dev.Book.getDefaultInstance()))
+          .build();
+  @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/1901")
+  public static final io.grpc.MethodDescriptor<com.dev.Book,
+      com.dev.Book> METHOD_GET_BOOKS_BY_GENDER =
+      io.grpc.MethodDescriptor.<com.dev.Book, com.dev.Book>newBuilder()
+          .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+          .setFullMethodName(generateFullMethodName(
+              "com.dev.BookAuthorService", "getBooksByGender"))
+          .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              com.dev.Book.getDefaultInstance()))
+          .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+              com.dev.Book.getDefaultInstance()))
+          .build();
 
   /**
    * Creates a new async stub that supports all call types for the service
@@ -78,6 +114,39 @@ public final class BookAuthorServiceGrpc {
       asyncUnimplementedUnaryCall(METHOD_GET_AUTHOR, responseObserver);
     }
 
+    /**
+     * <pre>
+     *sever streaming - Asynchronous
+     *client will send one request and server will send stream of response to the client.
+     * </pre>
+     */
+    public void getBooksByAuthor(com.dev.Author request,
+        io.grpc.stub.StreamObserver<com.dev.Book> responseObserver) {
+      asyncUnimplementedUnaryCall(METHOD_GET_BOOKS_BY_AUTHOR, responseObserver);
+    }
+
+    /**
+     * <pre>
+     *client streaming - Asynchronous
+     *client will stream of request and server will respond with one response.
+     * </pre>
+     */
+    public io.grpc.stub.StreamObserver<com.dev.Book> getExpensiveBook(
+        io.grpc.stub.StreamObserver<com.dev.Book> responseObserver) {
+      return asyncUnimplementedStreamingCall(METHOD_GET_EXPENSIVE_BOOK, responseObserver);
+    }
+
+    /**
+     * <pre>
+     *bi-directional streaming - Asynchronous
+     *client will send stream of request and server will respond with stream of response.
+     * </pre>
+     */
+    public io.grpc.stub.StreamObserver<com.dev.Book> getBooksByGender(
+        io.grpc.stub.StreamObserver<com.dev.Book> responseObserver) {
+      return asyncUnimplementedStreamingCall(METHOD_GET_BOOKS_BY_GENDER, responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -87,6 +156,27 @@ public final class BookAuthorServiceGrpc {
                 com.dev.Author,
                 com.dev.Author>(
                   this, METHODID_GET_AUTHOR)))
+          .addMethod(
+            METHOD_GET_BOOKS_BY_AUTHOR,
+            asyncServerStreamingCall(
+              new MethodHandlers<
+                com.dev.Author,
+                com.dev.Book>(
+                  this, METHODID_GET_BOOKS_BY_AUTHOR)))
+          .addMethod(
+            METHOD_GET_EXPENSIVE_BOOK,
+            asyncClientStreamingCall(
+              new MethodHandlers<
+                com.dev.Book,
+                com.dev.Book>(
+                  this, METHODID_GET_EXPENSIVE_BOOK)))
+          .addMethod(
+            METHOD_GET_BOOKS_BY_GENDER,
+            asyncBidiStreamingCall(
+              new MethodHandlers<
+                com.dev.Book,
+                com.dev.Book>(
+                  this, METHODID_GET_BOOKS_BY_GENDER)))
           .build();
     }
   }
@@ -120,6 +210,42 @@ public final class BookAuthorServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(METHOD_GET_AUTHOR, getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     *sever streaming - Asynchronous
+     *client will send one request and server will send stream of response to the client.
+     * </pre>
+     */
+    public void getBooksByAuthor(com.dev.Author request,
+        io.grpc.stub.StreamObserver<com.dev.Book> responseObserver) {
+      asyncServerStreamingCall(
+          getChannel().newCall(METHOD_GET_BOOKS_BY_AUTHOR, getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     *client streaming - Asynchronous
+     *client will stream of request and server will respond with one response.
+     * </pre>
+     */
+    public io.grpc.stub.StreamObserver<com.dev.Book> getExpensiveBook(
+        io.grpc.stub.StreamObserver<com.dev.Book> responseObserver) {
+      return asyncClientStreamingCall(
+          getChannel().newCall(METHOD_GET_EXPENSIVE_BOOK, getCallOptions()), responseObserver);
+    }
+
+    /**
+     * <pre>
+     *bi-directional streaming - Asynchronous
+     *client will send stream of request and server will respond with stream of response.
+     * </pre>
+     */
+    public io.grpc.stub.StreamObserver<com.dev.Book> getBooksByGender(
+        io.grpc.stub.StreamObserver<com.dev.Book> responseObserver) {
+      return asyncBidiStreamingCall(
+          getChannel().newCall(METHOD_GET_BOOKS_BY_GENDER, getCallOptions()), responseObserver);
+    }
   }
 
   /**
@@ -149,6 +275,18 @@ public final class BookAuthorServiceGrpc {
     public com.dev.Author getAuthor(com.dev.Author request) {
       return blockingUnaryCall(
           getChannel(), METHOD_GET_AUTHOR, getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     *sever streaming - Asynchronous
+     *client will send one request and server will send stream of response to the client.
+     * </pre>
+     */
+    public java.util.Iterator<com.dev.Book> getBooksByAuthor(
+        com.dev.Author request) {
+      return blockingServerStreamingCall(
+          getChannel(), METHOD_GET_BOOKS_BY_AUTHOR, getCallOptions(), request);
     }
   }
 
@@ -184,6 +322,9 @@ public final class BookAuthorServiceGrpc {
   }
 
   private static final int METHODID_GET_AUTHOR = 0;
+  private static final int METHODID_GET_BOOKS_BY_AUTHOR = 1;
+  private static final int METHODID_GET_EXPENSIVE_BOOK = 2;
+  private static final int METHODID_GET_BOOKS_BY_GENDER = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -206,6 +347,10 @@ public final class BookAuthorServiceGrpc {
           serviceImpl.getAuthor((com.dev.Author) request,
               (io.grpc.stub.StreamObserver<com.dev.Author>) responseObserver);
           break;
+        case METHODID_GET_BOOKS_BY_AUTHOR:
+          serviceImpl.getBooksByAuthor((com.dev.Author) request,
+              (io.grpc.stub.StreamObserver<com.dev.Book>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -216,6 +361,12 @@ public final class BookAuthorServiceGrpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_GET_EXPENSIVE_BOOK:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.getExpensiveBook(
+              (io.grpc.stub.StreamObserver<com.dev.Book>) responseObserver);
+        case METHODID_GET_BOOKS_BY_GENDER:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.getBooksByGender(
+              (io.grpc.stub.StreamObserver<com.dev.Book>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -240,6 +391,9 @@ public final class BookAuthorServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new BookAuthorServiceDescriptorSupplier())
               .addMethod(METHOD_GET_AUTHOR)
+              .addMethod(METHOD_GET_BOOKS_BY_AUTHOR)
+              .addMethod(METHOD_GET_EXPENSIVE_BOOK)
+              .addMethod(METHOD_GET_BOOKS_BY_GENDER)
               .build();
         }
       }
