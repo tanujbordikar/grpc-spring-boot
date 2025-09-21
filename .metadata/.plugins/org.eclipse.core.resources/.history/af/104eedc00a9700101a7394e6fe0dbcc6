@@ -1,0 +1,12 @@
+package com.dev.dto;
+
+@Entity
+@Table(name = "Author")
+public class AuthorEntity {
+    @Id
+    private Integer authorId;
+    private String firstName;
+    private String lastName;
+    private String gender;
+}
+

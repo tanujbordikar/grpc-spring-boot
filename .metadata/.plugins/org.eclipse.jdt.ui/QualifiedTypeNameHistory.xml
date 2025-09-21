@@ -3,14 +3,12 @@
     <fullyQualifiedTypeName name="net.devh.boot.grpc.server.service.GrpcService"/>
     <fullyQualifiedTypeName name="com.dev.BookAuthorServiceGrpc.BookAuthorServiceImplBase"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
-    <fullyQualifiedTypeName name="com.dev.BookAuthorClientService"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
     <fullyQualifiedTypeName name="com.google.protobuf.Descriptors.Descriptor"/>
     <fullyQualifiedTypeName name="com.google.protobuf.Descriptors"/>
     <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
     <fullyQualifiedTypeName name="net.devh.boot.grpc.client.inject.GrpcClient"/>
-    <fullyQualifiedTypeName name="com.dev.BookAuthorServiceGrpc"/>
     <fullyQualifiedTypeName name="com.dev.BookAuthorServiceGrpc.BookAuthorServiceBlockingStub"/>
     <fullyQualifiedTypeName name="com.google.protobuf.Descriptors.FieldDescriptor"/>
     <fullyQualifiedTypeName name="java.lang.Object"/>
@@ -20,5 +18,11 @@
     <fullyQualifiedTypeName name="com.dev.ServerMainApplication"/>
     <fullyQualifiedTypeName name="org.springframework.boot.SpringApplication"/>
     <fullyQualifiedTypeName name="com.google.j2objc.annotations.AutoreleasePool"/>
+    <fullyQualifiedTypeName name="com.dev.BookAuthorServiceGrpc.BookAuthorServiceStub"/>
+    <fullyQualifiedTypeName name="com.dev.BookAuthorServiceGrpc"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.dev.BookAuthorClientService"/>
+    <fullyQualifiedTypeName name="io.grpc.stub.StreamObservers"/>
+    <fullyQualifiedTypeName name="io.grpc.stub.StreamObserver"/>
+    <fullyQualifiedTypeName name="com.dev.TempDB"/>
 </qualifiedTypeNameHistroy>

@@ -116,7 +116,7 @@ public final class BookAuthorServiceGrpc {
 
     /**
      * <pre>
-     *sever streaming - Asynchronous
+     *server streaming - Asynchronous
      *client will send one request and server will send stream of response to the client.
      * </pre>
      */
@@ -213,7 +213,7 @@ public final class BookAuthorServiceGrpc {
 
     /**
      * <pre>
-     *sever streaming - Asynchronous
+     *server streaming - Asynchronous
      *client will send one request and server will send stream of response to the client.
      * </pre>
      */
@@ -279,7 +279,7 @@ public final class BookAuthorServiceGrpc {
 
     /**
      * <pre>
-     *sever streaming - Asynchronous
+     *server streaming - Asynchronous
      *client will send one request and server will send stream of response to the client.
      * </pre>
      */
