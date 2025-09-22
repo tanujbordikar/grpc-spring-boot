@@ -37,6 +37,12 @@ public class BookAuthorClientService {
 		return authorResponse.getAllFields();
 	}
 	
+	public Map<Descriptors.FieldDescriptor, Object> getAuthorfromMySql(int authorId) {
+		Author authorRequest = Author.newBuilder().setAuthorId(authorId).build();
+		Author authorResponse = synchronousClient.getAuthor(authorRequest);
+		return authorResponse.getAllFields();
+	}
+	
 	public List<Map<Descriptors.FieldDescriptor, Object>> getBooksByAuthor(int authorId) throws InterruptedException{
 		final Author authorRequest = Author.newBuilder().setAuthorId(authorId).build();
 		final CountDownLatch countDownLatch = new CountDownLatch(1);

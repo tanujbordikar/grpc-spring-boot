@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="net.devh.boot.grpc.server.service.GrpcService"/>
-    <fullyQualifiedTypeName name="com.dev.BookAuthorServiceGrpc.BookAuthorServiceImplBase"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
@@ -25,4 +24,11 @@
     <fullyQualifiedTypeName name="io.grpc.stub.StreamObservers"/>
     <fullyQualifiedTypeName name="io.grpc.stub.StreamObserver"/>
     <fullyQualifiedTypeName name="com.dev.TempDB"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Table"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="com.dev.BookAuthorServiceGrpc.BookAuthorServiceImplBase"/>
+    <fullyQualifiedTypeName name="lombok.Data"/>
+    <fullyQualifiedTypeName name="lombok.Getter"/>
 </qualifiedTypeNameHistroy>

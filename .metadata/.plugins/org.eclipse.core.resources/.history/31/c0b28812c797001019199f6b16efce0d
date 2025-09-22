@@ -1,0 +1,46 @@
+package com.dev.dto;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Table(name = "Author")
+@Data
+public class AuthorEntity {
+    
+	@Id
+    private Integer authorId;
+    private String firstName;
+    private String lastName;
+    private String gender;
+    
+    public Integer getAuthorId() {
+		return authorId;
+	}
+	public void setAuthorId(Integer authorId) {
+		this.authorId = authorId;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+}
+

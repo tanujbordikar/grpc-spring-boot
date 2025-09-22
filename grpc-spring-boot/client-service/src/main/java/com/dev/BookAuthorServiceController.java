@@ -19,10 +19,10 @@ public class BookAuthorServiceController {
 //		this.bookAuthorClientService = bookAuthorClientService;
 //	}
 
-	@GetMapping("/author/{id}")
-	public Map<Descriptors.FieldDescriptor, Object> getAuthor(@PathVariable("id") String id) {
-		return bookAuthorClientService.getAuthor(Integer.parseInt(id));
-	}
+//	@GetMapping("/author/{id}")
+//	public Map<Descriptors.FieldDescriptor, Object> getAuthor(@PathVariable("id") String id) {
+//		return bookAuthorClientService.getAuthor(Integer.parseInt(id));
+//	}
 
 	@GetMapping("/book/{id}")
 	public List<Map<Descriptors.FieldDescriptor, Object>> getBookByAuthor(@PathVariable("id") String id)
@@ -39,4 +39,9 @@ public class BookAuthorServiceController {
     public List<Map<Descriptors.FieldDescriptor, Object>> getBookByGender(@PathVariable("gender") String gender) throws InterruptedException {
         return bookAuthorClientService.getBooksByGender(gender);
     }
+	
+	@GetMapping("/mysql/author/{id}")
+	public Map<Descriptors.FieldDescriptor, Object> getAuthorfromMySql(@PathVariable("id") String id) {
+		return bookAuthorClientService.getAuthorfromMySql(Integer.parseInt(id));
+	}
 }
