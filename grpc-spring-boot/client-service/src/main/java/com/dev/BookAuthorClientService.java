@@ -15,11 +15,14 @@ import com.google.protobuf.Descriptors;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
+import net.devh.boot.grpc.client.inject.GrpcClient;
 
 @Service
 public class BookAuthorClientService {
 	
+	@GrpcClient("grpc-dev-service")
 	private final BookAuthorServiceGrpc.BookAuthorServiceBlockingStub synchronousClient;
+	@GrpcClient("grpc-dev-service")
 	private final BookAuthorServiceGrpc.BookAuthorServiceStub asynchronousClient;
 
     public BookAuthorClientService() {
@@ -32,12 +35,6 @@ public class BookAuthorClientService {
     }
     
 	public Map<Descriptors.FieldDescriptor, Object> getAuthor(int authorId) {
-		Author authorRequest = Author.newBuilder().setAuthorId(authorId).build();
-		Author authorResponse = synchronousClient.getAuthor(authorRequest);
-		return authorResponse.getAllFields();
-	}
-	
-	public Map<Descriptors.FieldDescriptor, Object> getAuthorfromMySql(int authorId) {
 		Author authorRequest = Author.newBuilder().setAuthorId(authorId).build();
 		Author authorResponse = synchronousClient.getAuthor(authorRequest);
 		return authorResponse.getAllFields();

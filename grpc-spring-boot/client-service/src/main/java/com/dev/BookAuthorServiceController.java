@@ -8,21 +8,21 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import com.google.protobuf.Descriptors;
 
-import lombok.AllArgsConstructor;
 
 @RestController
-@AllArgsConstructor
 public class BookAuthorServiceController {
-	private final BookAuthorClientService bookAuthorClientService = new BookAuthorClientService();
+	private BookAuthorClientService bookAuthorClientService;
+	private UserGrpcClientService userGrpcClientService;
 
-//	BookAuthorServiceController(BookAuthorClientService bookAuthorClientService){
-//		this.bookAuthorClientService = bookAuthorClientService;
-//	}
+	BookAuthorServiceController(BookAuthorClientService bookAuthorClientService, UserGrpcClientService userGrpcClientService){
+		this.bookAuthorClientService = bookAuthorClientService;
+		this.userGrpcClientService = userGrpcClientService;
+	}
 
-//	@GetMapping("/author/{id}")
-//	public Map<Descriptors.FieldDescriptor, Object> getAuthor(@PathVariable("id") String id) {
-//		return bookAuthorClientService.getAuthor(Integer.parseInt(id));
-//	}
+	@GetMapping("/author/{id}")
+	public Map<Descriptors.FieldDescriptor, Object> getAuthor(@PathVariable("id") String id) {
+		return bookAuthorClientService.getAuthor(Integer.parseInt(id));
+	}
 
 	@GetMapping("/book/{id}")
 	public List<Map<Descriptors.FieldDescriptor, Object>> getBookByAuthor(@PathVariable("id") String id)
@@ -40,8 +40,13 @@ public class BookAuthorServiceController {
         return bookAuthorClientService.getBooksByGender(gender);
     }
 	
-	@GetMapping("/mysql/author/{id}")
-	public Map<Descriptors.FieldDescriptor, Object> getAuthorfromMySql(@PathVariable("id") String id) {
-		return bookAuthorClientService.getAuthorfromMySql(Integer.parseInt(id));
+	@GetMapping("/grpcmysql/users/{id}")
+	public Map<Descriptors.FieldDescriptor, Object> getUsersfromMySql(@PathVariable("id") String id) {
+		return userGrpcClientService.getUserById(Integer.parseInt(id));
 	}
+	
+	@GetMapping("/grpcmysql/users")
+    public List<Map<Descriptors.FieldDescriptor, Object>> listAllUsers() throws InterruptedException {
+        return userGrpcClientService.listAllUsers();
+    }
 }

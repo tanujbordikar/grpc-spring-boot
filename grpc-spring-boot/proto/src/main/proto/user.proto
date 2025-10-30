@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package com.dev.grpcmysql;
+
+option java_multiple_files = true;
+option java_package = "com.dev.grpcmysql";
+option java_outer_classname = "UserServiceProto";
+
+message UserRequest {
+  int64 id = 1;
+}
+
+message UserResponse {
+  int64 id = 1;
+  string name = 2;
+  string email = 3;
+}
+
+message UserMessage {
+  int64 id = 1;
+  string name = 2;
+  string email = 3;
+}
+
+message SummaryResponse {
+  int32 createdCount = 1;
+}
+
+service UserService {
+  rpc GetUser (UserRequest) returns (UserResponse);
+  rpc ListUsers (UserRequest) returns (stream UserResponse);
+  rpc UploadUsers (stream UserMessage) returns (SummaryResponse);
+  rpc ChatUsers (stream UserMessage) returns (stream UserResponse);
+}
