@@ -8,6 +8,8 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.dev.grpcmysql.SummaryResponse;
+import com.dev.grpcmysql.UserMessage;
 import com.dev.grpcmysql.UserRequest;
 import com.dev.grpcmysql.UserResponse;
 import com.dev.grpcmysql.UserServiceGrpc.UserServiceImplBase;
@@ -61,6 +63,18 @@ public class UserGrpcService extends UserServiceImplBase{
 			responseObserver.onNext(resp);
 		}
 		responseObserver.onCompleted();
+	}
+
+	@Override
+	public StreamObserver<UserMessage> uploadUsers(StreamObserver<SummaryResponse> responseObserver) {
+		// TODO Auto-generated method stub
+		return super.uploadUsers(responseObserver);
+	}
+
+	@Override
+	public StreamObserver<UserMessage> chatUsers(StreamObserver<UserResponse> responseObserver) {
+		// TODO Auto-generated method stub
+		return super.chatUsers(responseObserver);
 	}
 
 	
