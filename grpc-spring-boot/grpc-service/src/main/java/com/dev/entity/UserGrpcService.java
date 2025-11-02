@@ -1,12 +1,13 @@
 package com.dev.entity;
 
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import com.dev.grpcmysql.SummaryResponse;
 import com.dev.grpcmysql.UserMessage;
@@ -67,8 +68,30 @@ public class UserGrpcService extends UserServiceImplBase{
 
 	@Override
 	public StreamObserver<UserMessage> uploadUsers(StreamObserver<SummaryResponse> responseObserver) {
-		// TODO Auto-generated method stub
-		return super.uploadUsers(responseObserver);
+		List<User> listOfUsers = new ArrayList<>();
+		return new StreamObserver<UserMessage>(){
+
+			@Override
+			public void onNext(UserMessage value) {
+				User user = new User(null, value.getEmail(), value.getName());
+				listOfUsers.add(user);
+			}
+
+			@Override
+			public void onError(Throwable t) {
+				System.err.println("Stream error: " + t.getMessage());
+			}
+
+			@Override
+			public void onCompleted() {
+				userService.saveAll(listOfUsers);
+				SummaryResponse response = SummaryResponse.newBuilder().setCreatedCount(listOfUsers.size()).build();
+				responseObserver.onNext(response);
+				responseObserver.onCompleted();
+				System.out.println("✅ Uploaded " + listOfUsers.size() + " users to DB.");
+			}
+			
+		};
 	}
 
 	@Override

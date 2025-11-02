@@ -6,3 +6,4 @@ com\dev\ClientMainApplication.class
 com\dev\BookAuthorServiceController.class
 com\dev\BookAuthorClientService$1.class
 com\dev\BookAuthorClientService.class
+com\dev\UserGrpcClientService$2.class
